@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free MozBar Alternative: SEO Lens On-Page SEO Audit (No Login)</title>
+<meta name="description" content="Free, no-login Chrome extension for on-page SEO: broken links, headings, schema, hreflang, redirects, robots.txt. Honest MozBar comparison.">
+<meta name="robots" content="index, follow">
+<!-- DRAFT: after deploying, add <link rel="canonical"> and make og:url / og:image / twitter:image absolute URLs on the final domain. -->
+<meta name="theme-color" content="#14150f">
+<link rel="icon" type="image/png" href="img/icon-128.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SEO Lens">
+<meta property="og:title" content="SEO Lens: the free, no-login alternative to MozBar for on-page SEO">
+<meta property="og:description" content="Headings, broken links, schema, hreflang, redirects and robots.txt in Chrome's side panel. No account, no tracking, nothing runs until you click.">
+<meta property="og:image" content="https://hassanr8998.github.io/seo-lens/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SEO Lens side panel showing an on-page SEO audit with a score of 96">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SEO Lens: free, no-login on-page SEO audit for Chrome">
+<meta name="twitter:description" content="Broken links, schema, hreflang, redirects, robots.txt. No account, no tracking, nothing runs until you click.">
+<meta name="twitter:image" content="img/og.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SEO Lens","applicationCategory":"BrowserApplication","operatingSystem":"Chrome","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://chromewebstore.google.com/detail/seo-lens-free-seo-audit-b/oajembmgegfkcnidgobkhdaiddcbggmb","description":"Free on-page SEO audit in Chrome's side panel: headings, broken links, schema, hreflang, redirects, robots.txt and sitemap. No login, no tracking."}
+</script>
+<style>
+:root{--bg:#14150f;--bg2:#1b1c15;--card:#1f2018;--line:#34322a;--text:#f2ead8;--muted:#b9b19c;--dim:#8f8875;--gold:#e8b65a;--green:#b5d47a;--serif:"Roboto Slab",Georgia,"Times New Roman",serif;--sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--gold)}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header.top{border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font:600 22px var(--serif);color:var(--text);text-decoration:none}
+.logo img{width:30px;height:30px}
+.logo small{font:600 11px var(--sans);letter-spacing:.14em;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 7px}
+nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:15px}
+nav a:hover{color:var(--text)}
+.btn{display:inline-block;background:var(--gold);color:#1a1709;font-weight:650;text-decoration:none;padding:14px 24px;border-radius:12px;font-size:17px}
+.btn:hover{filter:brightness(1.06)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.hero{padding:72px 0 56px;background:radial-gradient(900px 520px at 80% 30%,#2a2716 0%,transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(34px,5vw,54px);letter-spacing:-.01em}
+h1 em,h2 em{font-style:normal;color:var(--gold)}
+h2{font-size:clamp(28px,3.4vw,38px);margin-top:0}
+h3{font-size:22px}
+.lead{font-size:20px;color:#d8d0bb;max-width:36em}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 12px}
+.fine{color:var(--dim);font-size:14px}
+.shot{border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px var(--line);max-width:380px;margin-left:auto}
+section{padding:64px 0;border-top:1px solid var(--line)}
+section.alt{background:var(--bg2)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+.card p,.card li{color:#d8d0bb}
+ul.ticks{list-style:none;padding:0;margin:0}
+ul.ticks li{position:relative;padding-left:26px;margin:0 0 10px}
+ul.ticks li:before{content:"";position:absolute;left:3px;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.shots figure{margin:0}
+.shots figcaption{color:var(--dim);font-size:14px;margin-top:8px}
+.shots img{border-radius:14px;box-shadow:0 0 0 1px var(--line)}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:16px}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);background:var(--card)}
+tr:last-child td{border-bottom:0}
+td b{color:var(--gold)}
+.note{color:var(--dim);font-size:14px;margin-top:10px}
+.honest{border:1px solid #5a4a25;background:#221f14;border-radius:18px;padding:32px}
+.honest .verdict{margin-top:18px;font-size:18px;color:var(--text)}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:600;font-size:18px}
+details p{color:#d8d0bb;margin:12px 0 0}
+.swipe{display:none}
+.final{text-align:center}
+.final .lead{margin:0 auto 24px}
+footer{border-top:1px solid var(--line);padding:32px 0 44px;color:var(--dim);font-size:14px}
+footer .row{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
+footer a{color:var(--muted)}
+@media (max-width:900px){
+  .hero .wrap,.split{grid-template-columns:1fr}
+  .shot{margin:8px auto 0;max-width:340px}
+  .grid3{grid-template-columns:1fr}
+  nav a.hide-sm{display:none}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .hero{padding:44px 0 36px}
+  section{padding:44px 0}
+  .lead{font-size:18px}
+  .btn{width:100%;text-align:center}
+  .shots{grid-template-columns:1fr}
+  nav a{margin-left:14px}
+  .logo small{display:none}
+  .swipe{display:block}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="#"><img src="img/icon-128.png" alt="" width="30" height="30">SEO Lens <small>FREE</small></a>
+  <nav><a class="hide-sm" href="#features">Features</a><a class="hide-sm" href="#mozbar">vs MozBar</a><a href="https://hassanr8998.github.io/seo-lens-privacy/">Privacy</a></nav>
+</div></header>
+
+<main>
+<section class="hero" style="border-top:0"><div class="wrap">
+  <div>
+    <h1>The free, no-login alternative to MozBar for <em>on-page SEO</em></h1>
+    <p class="lead">SEO Lens audits any page from Chrome's side panel: headings, broken links, schema, hreflang, redirects, robots.txt and more. There's no account, no tracking, and nothing runs until you click.</p>
+    <div class="ctas">
+      <a class="btn" href="https://chromewebstore.google.com/detail/seo-lens-free-seo-audit-b/oajembmgegfkcnidgobkhdaiddcbggmb?utm_source=website&amp;utm_medium=landing&amp;utm_campaign=hero">Add to Chrome, it's free</a>
+      <a class="btn ghost" href="#compare">See the comparison ↓</a>
+    </div>
+    <p class="fine">Free for everything on this page. No signup. Works on any http(s) page.</p>
+  </div>
+  <div class="shot"><img src="img/panel-overview.png" width="420" height="900" alt="SEO Lens side panel on a restaurant website: score 96, title and meta description meters, canonical, robots, lang, viewport, HTTP status 200"></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Three reasons people switch</h2>
+  <div class="grid3">
+    <div class="card"><h3>1. Nothing runs until you click</h3>
+      <p>MozBar 5.0.17 loads a <b>332 KB toolbar script on every http(s) page you visit</b>, plus another 284 KB on search engines. SEO Lens loads <b>0 KB</b> until you open the panel, and then only on that tab.</p>
+      <p>SEO Lens needs site access to read the page you audit, runs nothing until you click, and sends no data.</p></div>
+    <div class="card"><h3>2. Checks MozBar doesn't have</h3>
+      <ul class="ticks">
+        <li><b>Broken-link checker:</b> 150 links per batch, with "blocked" (401/403/429/999) kept separate from "broken"</li>
+        <li><b>robots.txt evaluation:</b> does it actually block <i>this</i> URL?</li>
+        <li><b>hreflang validation:</b> missing x-default and return links</li>
+        <li><b>Sitemap status</b>, including sitemaps listed in robots.txt</li>
+        <li><b>Real HTTP status codes</b> and the redirect chain hop by hop</li>
+      </ul></div>
+    <div class="card"><h3>3. More accurate on modern pages</h3>
+      <ul class="ticks">
+        <li>Schema types on a local restaurant site: <b>7</b> (nested JSON-LD) vs 3</li>
+        <li>Schema on a GitHub repo (microdata): <b>1 real + 1 flagged</b> vs 0</li>
+        <li>Images inside shadow DOM (MDN): <b>3</b> vs 0</li>
+        <li>Wikipedia internal links: <b>328</b> (excludes # links) vs 504 (includes 174 hash links)</li>
+      </ul>
+      <p class="note">From our own tests on 2026-10-21 (SEO Lens 1.0.0 vs MozBar 5.0.17, logged out).</p></div>
+  </div>
+</div></section>
+
+<section class="alt" id="features"><div class="wrap split">
+  <div>
+    <h2>Everything you get, <em>free</em></h2>
+    <ul class="ticks">
+      <li><b>Score and issues:</b> a 0–100 on-page score from 21 rules, plus a toolbar badge</li>
+      <li><b>Basics:</b> title and description meters, canonical, meta robots, X-Robots-Tag, lang, viewport, visible word count, HTTP status</li>
+      <li><b>Headings:</b> a nested H1–H6 tree covering shadow DOM, same-origin iframes and role="heading". Flags skipped levels and missing or multiple H1s, keeps hidden headings out of the score, and scrolls to any heading you click.</li>
+      <li><b>Links:</b> internal, external, nofollow, sponsored and UGC, with on-page highlighting and the full list</li>
+      <li><b>Images:</b> missing vs empty alt, dimensions, file sizes</li>
+      <li><b>Structured data:</b> JSON-LD and microdata, with invalid JSON and unknown types flagged</li>
+      <li><b>Social:</b> rendered Open Graph and Twitter card previews</li>
+      <li><b>Export:</b> CSV or JSON for every report</li>
+    </ul>
+  </div>
+  <div class="shots">
+    <figure><img src="img/panel-links.png" width="420" height="900" loading="lazy" alt="Links tab: 273 internal, 44 external, 29 nofollow, 2 broken, with a Check more button"><figcaption>Broken-link check on a GitHub repo</figcaption></figure>
+    <figure><img src="img/panel-headings.png" width="420" height="900" loading="lazy" alt="Headings tab: nested outline with shadow DOM headings and a skipped-level warning"><figcaption>Heading tree on an MDN page, shadow DOM included</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="privacy"><div class="wrap">
+  <h2>Private by design</h2>
+  <div class="grid3">
+    <div class="card"><h3>No account, no analytics</h3><p>No login, no tracking SDK, no remote logging, and no SEO Lens server.</p></div>
+    <div class="card"><h3>Site access, used narrowly</h3><p>SEO Lens needs site access to read the page you audit, runs nothing until you click, and sends no data. The audit runs in your browser; nothing is uploaded.</p></div>
+    <div class="card"><h3>Checks go straight to the site</h3><p>Network checks (broken links, file sizes, status, redirects, robots.txt, sitemap) run only when you start them and go directly to the site you're checking. MozBar, by comparison, reads moz.com auth cookies; SEO Lens uses none.</p></div>
+  </div>
+  <p style="margin-top:22px"><a href="https://hassanr8998.github.io/seo-lens-privacy/">Read the privacy policy →</a></p>
+</div></section>
+
+<section class="alt" id="mozbar"><div class="wrap">
+  <div class="honest">
+    <h2>Where MozBar is still better <em>(honestly)</em></h2>
+    <p>We'd rather tell you up front:</p>
+    <ul class="ticks">
+      <li><b>Domain Authority, Page Authority, Spam Score and backlinks.</b> That's Moz's link index, and SEO Lens has no equivalent. (Moz's free Community account gives DA/PA with a 1,000-query monthly limit.)</li>
+      <li><b>Keyword data:</b> ranking keywords, difficulty, and keyword-specific on-page grading (Moz Pro).</li>
+      <li><b>SERP overlay</b> on Google, Bing, DuckDuckGo and Yahoo with metrics and CSV export (Pro). SEO Lens's SERP tools are Google-only and still being verified.</li>
+      <li><b>Domain Overview</b>, a persistent dockable toolbar, a site block list and caching.</li>
+      <li><b>A raw JSON-LD viewer</b> and an explicit HTTPS row.</li>
+      <li><b>A long track record.</b> MozBar has over 1 million users. SEO Lens is new.</li>
+    </ul>
+    <p class="verdict"><b>If DA and backlinks drive your work, keep MozBar or Moz Pro.</b> For on-page audits, SEO Lens is free and private, and it runs only when you ask. Many people will reasonably use both.</p>
+  </div>
+</div></section>
+
+<section id="compare"><div class="wrap">
+  <h2>Side-by-side summary</h2>
+  <p class="note swipe">Swipe the table sideways to see all columns.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th></th><th>SEO Lens</th><th>MozBar free (logged out)</th><th>MozBar with Moz Pro</th></tr></thead>
+    <tbody>
+      <tr><td>Price</td><td><b>Free</b></td><td>Free (limited)</td><td>Moz Pro from $49/mo (entry); Standard $99/mo or $79/mo yearly</td></tr>
+      <tr><td>Login</td><td><b>Never</b></td><td>No (on-page sections)</td><td>Moz account + subscription</td></tr>
+      <tr><td>Broken-link checker</td><td><b>✓</b></td><td>✗</td><td>✗</td></tr>
+      <tr><td>robots.txt "blocks this URL?"</td><td><b>✓</b></td><td>link only</td><td>link only</td></tr>
+      <tr><td>hreflang x-default + return links</td><td><b>✓</b></td><td>✗</td><td>✗</td></tr>
+      <tr><td>Microdata + schema warnings</td><td><b>✓</b></td><td>✗</td><td>✗</td></tr>
+      <tr><td>Shadow DOM headings/images</td><td><b>✓</b></td><td>✗</td><td>✗</td></tr>
+      <tr><td>On-page score + issue list</td><td><b>✓</b> (21 rules)</td><td>✗</td><td>keyword-specific grader</td></tr>
+      <tr><td>CSV/JSON export</td><td><b>✓</b> every page</td><td>✗</td><td>CSV for SERP/page metrics</td></tr>
+      <tr><td>JS loaded on every page</td><td><b>0 KB</b> until you click</td><td>332 KB</td><td>332 KB</td></tr>
+      <tr><td>DA / PA / backlinks</td><td>✗</td><td>✗</td><td><b>✓</b></td></tr>
+      <tr><td>Keyword volume / difficulty</td><td>✗</td><td>✗</td><td><b>✓</b></td></tr>
+      <tr><td>SERP overlay engines</td><td>Google (unverified live)</td><td>4 engines, no metrics logged out</td><td><b>4 engines with metrics</b></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Gold marks the stronger option in each row. Based on SEO Lens 1.0.0 and MozBar 5.0.17 as tested on 2026-10-21.</p>
+</div></section>
+
+<section class="alt"><div class="wrap" style="max-width:860px">
+  <h2>FAQ</h2>
+  <details open><summary>Is SEO Lens really free?</summary><p>Yes. Every feature on this page is free and there's no account. Paid domain metrics aren't part of SEO Lens today.</p></details>
+  <details><summary>Does it collect my browsing data?</summary><p>No. It has no analytics, no server and no account. It reads a page only when you open the panel on it. See the <a href="https://hassanr8998.github.io/seo-lens-privacy/">privacy policy</a>.</p></details>
+  <details><summary>Why does it ask for site access?</summary><p>SEO Lens needs site access to read the page you audit, runs nothing until you click, and sends no data. Chrome's side panel doesn't reliably get access to the current tab without it, and the checks you start (broken links, file sizes, status/redirects, robots.txt, sitemap) request those URLs directly from your browser. The only optional permission is webRequest, which records redirect hops; decline it and you just see the final URL.</p></details>
+  <details><summary>Does it show Domain Authority?</summary><p>No. DA is Moz's proprietary metric. On the roadmap: optional bring-your-own-API-key domain metrics, with keys stored only on your computer.</p></details>
+  <details><summary>Which browsers?</summary><p>Chrome (it uses the Chrome side panel). Other Chromium browsers haven't been tested yet.</p></details>
+  <details><summary>Can I use it alongside MozBar?</summary><p>Yes. The two don't conflict.</p></details>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>Audit your next page in one click</h2>
+  <p class="lead">No login. No tracking. Nothing runs until you click.</p>
+  <a class="btn" href="https://chromewebstore.google.com/detail/seo-lens-free-seo-audit-b/oajembmgegfkcnidgobkhdaiddcbggmb?utm_source=website&amp;utm_medium=landing&amp;utm_campaign=footer">Add SEO Lens to Chrome, free</a>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="row">
+    <a href="https://chromewebstore.google.com/detail/seo-lens-free-seo-audit-b/oajembmgegfkcnidgobkhdaiddcbggmb">Chrome Web Store</a>
+    <a href="https://hassanr8998.github.io/seo-lens-privacy/">Privacy policy</a>
+    <a href="mailto:hassanr8998@gmail.com">Contact</a>
+  </div>
+  <p>MozBar and Moz are trademarks of Moz, Inc. SEO Lens is not affiliated with or endorsed by Moz. Comparison based on SEO Lens 1.0.0 and MozBar 5.0.17 as tested on 2026-10-21; Moz pricing from moz.com/products/pro/pricing on that date. Features may have changed since.</p>
+</div></footer>
+</body>
+</html>

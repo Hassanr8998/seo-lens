@@ -7,7 +7,7 @@
 <meta name="description" content="Free, no-login Chrome extension for on-page SEO: broken links, headings, schema, hreflang, redirects, robots.txt. Honest MozBar comparison.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://hassanr8998.github.io/seo-lens/">
-<meta name="theme-color" content="#14150f">
+<meta name="theme-color" content="#0a0a0a">
 <link rel="icon" type="image/png" href="img/icon-128.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SchemaPeek">
@@ -26,179 +26,239 @@
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"SchemaPeek","applicationCategory":"BrowserApplication","operatingSystem":"Chrome","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://chromewebstore.google.com/detail/seo-lens-free-seo-audit-b/oajembmgegfkcnidgobkhdaiddcbggmb","description":"Free on-page SEO audit in Chrome's side panel: headings, broken links, schema, hreflang, redirects, robots.txt and sitemap. No login, no tracking."}
 </script>
 <style>
-:root{--bg:#14150f;--bg2:#1b1c15;--card:#1f2018;--line:#34322a;--text:#f2ead8;--muted:#b9b19c;--dim:#8f8875;--gold:#e8b65a;--green:#b5d47a;--serif:"Roboto Slab",Georgia,"Times New Roman",serif;--sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
-*{box-sizing:border-box}
+:root{
+  --bg:#0a0a0a;
+  --bg2:#111111;
+  --card:#161616;
+  --line:rgba(255,255,255,.08);
+  --line2:rgba(255,255,255,.12);
+  --text:#ededed;
+  --muted:#a1a1a1;
+  --dim:#737373;
+  --accent:#8b5cf6;
+  --accent-hover:#9d74f7;
+  --accent-soft:rgba(139,92,246,.12);
+  --font:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-a{color:var(--gold)}
+body{background:var(--bg);color:var(--text);font:16px/1.6 var(--font);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent-hover)}
 img{max-width:100%;height:auto;display:block}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-header.top{border-bottom:1px solid var(--line)}
-header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
-.logo{display:flex;align-items:center;gap:10px;font:600 22px var(--serif);color:var(--text);text-decoration:none}
-.logo img{width:30px;height:30px}
-.logo small{font:600 11px var(--sans);letter-spacing:.14em;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:2px 7px}
-nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* Header */
+.top{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);background:rgba(10,10,10,.72);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:600;font-size:15px;letter-spacing:-.01em}
+.logo img{width:28px;height:28px;border-radius:7px}
+.logo .badge{font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--muted);border:1px solid var(--line2);border-radius:999px;padding:2px 8px}
+nav{display:flex;align-items:center;gap:28px}
+nav a{color:var(--muted);font-size:14px}
 nav a:hover{color:var(--text)}
-.btn{display:inline-block;background:var(--gold);color:#1a1709;font-weight:650;text-decoration:none;padding:14px 24px;border-radius:12px;font-size:17px}
-.btn:hover{filter:brightness(1.06)}
-.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
-.hero{padding:72px 0 56px;background:radial-gradient(900px 520px at 80% 30%,#2a2716 0%,transparent 70%)}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
-h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0 0 .5em}
-h1{font-size:clamp(34px,5vw,54px);letter-spacing:-.01em}
-h1 em,h2 em{font-style:normal;color:var(--gold)}
-h2{font-size:clamp(28px,3.4vw,38px);margin-top:0}
-h3{font-size:22px}
-.lead{font-size:20px;color:#d8d0bb;max-width:36em}
-.ctas{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 12px}
-.fine{color:var(--dim);font-size:14px}
-.shot{border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px var(--line);max-width:380px;margin-left:auto}
-section{padding:64px 0;border-top:1px solid var(--line)}
-section.alt{background:var(--bg2)}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
-.card p,.card li{color:#d8d0bb}
-ul.ticks{list-style:none;padding:0;margin:0}
-ul.ticks li{position:relative;padding-left:26px;margin:0 0 10px}
-ul.ticks li:before{content:"";position:absolute;left:3px;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-weight:560;font-size:15px;letter-spacing:-.01em;padding:12px 22px;border-radius:10px;border:0;transition:background .15s ease,transform .15s ease}
+.btn:hover{background:var(--accent-hover);color:#fff;transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line2);padding:11px 20px}
+.btn.ghost:hover{background:rgba(255,255,255,.04);color:var(--text);border-color:rgba(255,255,255,.2)}
+
+/* Hero */
+.hero{padding:96px 0 72px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 320px at 50% -10%,rgba(139,92,246,.18),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);background:var(--accent-soft);border:1px solid rgba(139,92,246,.25);color:#c4b5fd;padding:5px 12px;border-radius:999px;margin-bottom:22px;font-weight:500}
+h1{font-size:clamp(36px,5.2vw,52px);font-weight:600;letter-spacing:-.035em;line-height:1.08;margin-bottom:18px}
+h1 span{color:#c4b5fd}
+.lead{font-size:18px;color:var(--muted);max-width:34em;line-height:1.65;margin-bottom:28px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+.fine{color:var(--dim);font-size:13px}
+.shot{border-radius:16px;overflow:hidden;border:1px solid var(--line2);box-shadow:0 40px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.04);max-width:360px;margin-left:auto;background:var(--card)}
+
+/* Sections */
+section{padding:88px 0;border-top:1px solid var(--line)}
+section.tight{padding:64px 0}
+h2{font-size:clamp(26px,3.2vw,36px);font-weight:600;letter-spacing:-.03em;line-height:1.15;margin-bottom:14px}
+.sub{color:var(--muted);font-size:17px;max-width:36em;margin-bottom:40px}
+h3{font-size:16px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+
+/* Feature grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .15s ease}
+.card:hover{border-color:var(--line2)}
+.card p,.card li{color:var(--muted);font-size:14.5px;line-height:1.55}
+.card .ico{width:32px;height:32px;border-radius:8px;background:var(--accent-soft);color:#c4b5fd;display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:14px;font-weight:600}
+ul.ticks{list-style:none}
+ul.ticks li{position:relative;padding-left:20px;margin:0 0 10px;color:var(--muted);font-size:14.5px}
+ul.ticks li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+ul.ticks li b{color:var(--text);font-weight:560}
+
+/* Split */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.shots{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .shots figure{margin:0}
-.shots figcaption{color:var(--dim);font-size:14px;margin-top:8px}
-.shots img{border-radius:14px;box-shadow:0 0 0 1px var(--line)}
+.shots figcaption{color:var(--dim);font-size:12px;margin-top:8px}
+.shots img{border-radius:12px;border:1px solid var(--line)}
+
+/* Comparison strip */
+.compare-strip{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.compare-card{border-radius:14px;padding:28px;border:1px solid var(--line);background:var(--card)}
+.compare-card.win{border-color:rgba(139,92,246,.35);background:linear-gradient(180deg,rgba(139,92,246,.08),var(--card) 50%)}
+.compare-card .label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.compare-card.win .label{color:#c4b5fd}
+.compare-card ul{list-style:none;margin-top:16px}
+.compare-card li{color:var(--muted);font-size:14px;padding:8px 0;border-top:1px solid var(--line);display:flex;gap:10px;align-items:flex-start}
+.compare-card li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0}
+.compare-card.honest li::before{content:"–";color:var(--dim)}
+.verdict{margin-top:28px;padding:20px 24px;border-radius:12px;background:var(--bg2);border:1px solid var(--line);color:var(--muted);font-size:15px}
+.verdict b{color:var(--text)}
+
+/* Table */
 .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:14px}
-table{border-collapse:collapse;width:100%;min-width:640px;font-size:16px}
-th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);background:var(--card);font-weight:600}
 tr:last-child td{border-bottom:0}
-td b{color:var(--gold)}
-.note{color:var(--dim);font-size:14px;margin-top:10px}
-.honest{border:1px solid #5a4a25;background:#221f14;border-radius:18px;padding:32px}
-.honest .verdict{margin-top:18px;font-size:18px;color:var(--text)}
-details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:12px}
-summary{cursor:pointer;font-weight:600;font-size:18px}
-details p{color:#d8d0bb;margin:12px 0 0}
+td b{color:#c4b5fd;font-weight:560}
+.note{color:var(--dim);font-size:13px;margin-top:12px}
 .swipe{display:none}
-.final{text-align:center}
-.final .lead{margin:0 auto 24px}
-footer{border-top:1px solid var(--line);padding:32px 0 44px;color:var(--dim);font-size:14px}
-footer .row{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px}
+
+/* FAQ */
+.faq{max-width:720px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:560;font-size:15px;letter-spacing:-.01em;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--dim);font-size:18px;font-weight:400;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:12px;font-size:14.5px;line-height:1.6}
+details a{color:#c4b5fd}
+
+/* Final CTA */
+.final{text-align:center;padding:96px 0}
+.final .lead{margin:0 auto 28px;max-width:28em}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--dim);font-size:13px}
+footer .row{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:16px}
 footer a{color:var(--muted)}
+footer a:hover{color:var(--text)}
+footer p{max-width:60em;line-height:1.55}
+
 @media (max-width:900px){
-  .hero .wrap,.split{grid-template-columns:1fr}
-  .shot{margin:8px auto 0;max-width:340px}
-  .grid3{grid-template-columns:1fr}
-  nav a.hide-sm{display:none}
+  .hero .wrap,.split,.compare-strip{grid-template-columns:1fr}
+  .shot{margin:12px auto 0;max-width:320px}
+  .grid{grid-template-columns:1fr}
+  nav .hide{display:none}
+  .hero{padding:64px 0 48px}
+  section{padding:64px 0}
 }
 @media (max-width:520px){
-  body{font-size:16px}
   .wrap{padding:0 18px}
-  .hero{padding:44px 0 36px}
-  section{padding:44px 0}
-  .lead{font-size:18px}
-  .btn{width:100%;text-align:center}
+  .btn{width:100%}
+  .ctas .btn.ghost{width:100%}
   .shots{grid-template-columns:1fr}
-  nav a{margin-left:14px}
-  .logo small{display:none}
+  .logo .badge{display:none}
   .swipe{display:block}
+  h1{font-size:32px}
+  .lead{font-size:16px}
 }
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="logo" href="#"><img src="img/icon-128.png" alt="" width="30" height="30">SchemaPeek <small>FREE</small></a>
-  <nav><a class="hide-sm" href="#features">Features</a><a class="hide-sm" href="#mozbar">vs MozBar</a><a href="https://hassanr8998.github.io/seo-lens-privacy/">Privacy</a></nav>
+  <a class="logo" href="#"><img src="img/icon-128.png" alt="" width="28" height="28">SchemaPeek <span class="badge">FREE</span></a>
+  <nav>
+    <a class="hide" href="#features">Features</a>
+    <a class="hide" href="#mozbar">vs MozBar</a>
+    <a href="https://hassanr8998.github.io/seo-lens-privacy/">Privacy</a>
+  </nav>
 </div></header>
 
 <main>
 <section class="hero" style="border-top:0"><div class="wrap">
   <div>
-    <h1>The free, no-login alternative to MozBar for <em>on-page SEO</em></h1>
-    <p class="lead">SchemaPeek (formerly SEO Lens) audits any page from Chrome's side panel: headings, broken links, schema, hreflang, redirects, robots.txt and more. There's no account, no tracking, and nothing runs until you click.</p>
+    <div class="kicker">Formerly SEO Lens · Free Chrome extension</div>
+    <h1>On-page SEO audits in Chrome's side panel. <span>No login.</span></h1>
+    <p class="lead">SchemaPeek (formerly SEO Lens) checks headings, broken links, schema, hreflang, redirects and robots.txt on any page. No account, no tracking, and nothing runs until you click.</p>
     <div class="ctas">
       <a class="btn" href="https://chromewebstore.google.com/detail/seo-lens-free-seo-audit-b/oajembmgegfkcnidgobkhdaiddcbggmb?utm_source=website&amp;utm_medium=landing&amp;utm_campaign=hero">Add to Chrome, it's free</a>
-      <a class="btn ghost" href="#compare">See the comparison ↓</a>
     </div>
-    <p class="fine">Free for everything on this page. No signup. Works on any http(s) page.</p>
+    <p class="fine">Works on any http(s) page · No signup · Private by design</p>
   </div>
   <div class="shot"><img src="img/panel-overview.png" width="420" height="900" alt="SchemaPeek side panel on a restaurant website: score 96, title and meta description meters, canonical, robots, lang, viewport, HTTP status 200"></div>
 </div></section>
 
-<section><div class="wrap">
-  <h2>Three reasons people switch</h2>
-  <div class="grid3">
-    <div class="card"><h3>1. Nothing runs until you click</h3>
-      <p>MozBar 5.0.17 loads a <b>332 KB toolbar script on every http(s) page you visit</b>, plus another 284 KB on search engines. SchemaPeek loads <b>0 KB</b> until you open the panel, and then only on that tab.</p>
-      <p>SchemaPeek needs site access to read the page you audit, runs nothing until you click, and sends no data.</p></div>
-    <div class="card"><h3>2. Checks MozBar doesn't have</h3>
-      <ul class="ticks">
-        <li><b>Broken-link checker:</b> 150 links per batch, with "blocked" (401/403/429/999) kept separate from "broken"</li>
-        <li><b>robots.txt evaluation:</b> does it actually block <i>this</i> URL?</li>
-        <li><b>hreflang validation:</b> missing x-default and return links</li>
-        <li><b>Sitemap status</b>, including sitemaps listed in robots.txt</li>
-        <li><b>Real HTTP status codes</b> and the redirect chain hop by hop</li>
-      </ul></div>
-    <div class="card"><h3>3. More accurate on modern pages</h3>
-      <ul class="ticks">
-        <li>Schema types on a local restaurant site: <b>7</b> (nested JSON-LD) vs 3</li>
-        <li>Schema on a GitHub repo (microdata): <b>1 real + 1 flagged</b> vs 0</li>
-        <li>Images inside shadow DOM (MDN): <b>3</b> vs 0</li>
-        <li>Wikipedia internal links: <b>328</b> (excludes # links) vs 504 (includes 174 hash links)</li>
-      </ul>
-      <p class="note">From our own tests on 2026-10-21 (SchemaPeek 1.0.0 vs MozBar 5.0.17, logged out).</p></div>
+<section id="features"><div class="wrap">
+  <h2>Everything you need for an on-page audit</h2>
+  <p class="sub">Open the panel on any tab. SchemaPeek scores the page, lists issues, and lets you dig into headings, links, images, schema and social tags.</p>
+  <div class="grid">
+    <div class="card"><div class="ico">01</div><h3>Score &amp; issues</h3><p>A 0–100 on-page score from 21 rules, with a matching toolbar badge that clears when you navigate away.</p></div>
+    <div class="card"><div class="ico">02</div><h3>Basics</h3><p>Title and description meters, canonical, meta robots, X-Robots-Tag, lang, viewport, word count and HTTP status.</p></div>
+    <div class="card"><div class="ico">03</div><h3>Headings</h3><p>Nested H1–H6 tree covering shadow DOM and same-origin iframes. Flags skipped levels and missing or multiple H1s.</p></div>
+    <div class="card"><div class="ico">04</div><h3>Broken links</h3><p>150 links per batch. "Blocked" (401/403/429/999) stays separate from "broken". Internal, external, nofollow, sponsored and UGC.</p></div>
+    <div class="card"><div class="ico">05</div><h3>Schema &amp; social</h3><p>JSON-LD and microdata with invalid JSON and unknown types flagged. Rendered Open Graph and Twitter card previews.</p></div>
+    <div class="card"><div class="ico">06</div><h3>robots.txt &amp; hreflang</h3><p>Does robots.txt actually block this URL? hreflang missing x-default and return links. Sitemap status included.</p></div>
+    <div class="card"><div class="ico">07</div><h3>Images</h3><p>Missing vs empty alt, dimensions and file sizes — including images inside shadow DOM.</p></div>
+    <div class="card"><div class="ico">08</div><h3>Redirects</h3><p>Real HTTP status codes and the redirect chain hop by hop, recorded in your browser.</p></div>
+    <div class="card"><div class="ico">09</div><h3>Export</h3><p>Copy or download CSV and JSON for every report. No account required.</p></div>
   </div>
 </div></section>
 
-<section class="alt" id="features"><div class="wrap split">
+<section class="tight" style="background:var(--bg2)"><div class="wrap split">
   <div>
-    <h2>Everything you get, <em>free</em></h2>
+    <h2>Private by design</h2>
+    <p class="sub" style="margin-bottom:24px">No login, no analytics SDK, no remote logging, and no SchemaPeek server. The audit runs in your browser.</p>
     <ul class="ticks">
-      <li><b>Score and issues:</b> a 0–100 on-page score from 21 rules, plus a toolbar badge</li>
-      <li><b>Basics:</b> title and description meters, canonical, meta robots, X-Robots-Tag, lang, viewport, visible word count, HTTP status</li>
-      <li><b>Headings:</b> a nested H1–H6 tree covering shadow DOM, same-origin iframes and role="heading". Flags skipped levels and missing or multiple H1s, keeps hidden headings out of the score, and scrolls to any heading you click.</li>
-      <li><b>Links:</b> internal, external, nofollow, sponsored and UGC, with on-page highlighting and the full list</li>
-      <li><b>Images:</b> missing vs empty alt, dimensions, file sizes</li>
-      <li><b>Structured data:</b> JSON-LD and microdata, with invalid JSON and unknown types flagged</li>
-      <li><b>Social:</b> rendered Open Graph and Twitter card previews</li>
-      <li><b>Export:</b> CSV or JSON for every report</li>
+      <li><b>0 KB loaded</b> until you open the panel — then only on that tab</li>
+      <li><b>Site access used narrowly</b> to read the page you audit; nothing is uploaded</li>
+      <li><b>Network checks</b> (broken links, status, robots.txt, sitemap) go straight to the site you're checking</li>
+      <li><b>No Moz cookies</b> — SchemaPeek uses none</li>
     </ul>
+    <p style="margin-top:20px"><a href="https://hassanr8998.github.io/seo-lens-privacy/">Read the privacy policy →</a></p>
   </div>
   <div class="shots">
     <figure><img src="img/panel-links.png" width="420" height="900" loading="lazy" alt="Links tab: 273 internal, 44 external, 29 nofollow, 2 broken, with a Check more button"><figcaption>Broken-link check on a GitHub repo</figcaption></figure>
-    <figure><img src="img/panel-headings.png" width="420" height="900" loading="lazy" alt="Headings tab: nested outline with shadow DOM headings and a skipped-level warning"><figcaption>Heading tree on an MDN page, shadow DOM included</figcaption></figure>
+    <figure><img src="img/panel-headings.png" width="420" height="900" loading="lazy" alt="Headings tab: nested outline with shadow DOM headings and a skipped-level warning"><figcaption>Heading tree on an MDN page</figcaption></figure>
   </div>
 </div></section>
 
-<section id="privacy"><div class="wrap">
-  <h2>Private by design</h2>
-  <div class="grid3">
-    <div class="card"><h3>No account, no analytics</h3><p>No login, no tracking SDK, no remote logging, and no SchemaPeek server.</p></div>
-    <div class="card"><h3>Site access, used narrowly</h3><p>SchemaPeek needs site access to read the page you audit, runs nothing until you click, and sends no data. The audit runs in your browser; nothing is uploaded.</p></div>
-    <div class="card"><h3>Checks go straight to the site</h3><p>Network checks (broken links, file sizes, status, redirects, robots.txt, sitemap) run only when you start them and go directly to the site you're checking. MozBar, by comparison, reads moz.com auth cookies; SchemaPeek uses none.</p></div>
+<section id="mozbar"><div class="wrap">
+  <h2>SchemaPeek vs MozBar</h2>
+  <p class="sub">An honest look. SchemaPeek wins on free on-page depth and privacy. MozBar wins on domain metrics and SERP overlays.</p>
+  <div class="compare-strip">
+    <div class="compare-card win">
+      <div class="label">SchemaPeek is stronger at</div>
+      <h3>Free on-page audits</h3>
+      <ul>
+        <li>Broken-link checker with blocked vs broken</li>
+        <li>robots.txt "blocks this URL?" check</li>
+        <li>hreflang x-default + return links</li>
+        <li>Microdata + schema warnings</li>
+        <li>Shadow DOM headings and images</li>
+        <li>0 KB loaded until you click</li>
+        <li>CSV/JSON export on every page</li>
+        <li>No login, ever</li>
+      </ul>
+    </div>
+    <div class="compare-card honest">
+      <div class="label">MozBar is still better at</div>
+      <h3>Domain &amp; keyword data</h3>
+      <ul>
+        <li>Domain Authority, Page Authority, Spam Score, backlinks</li>
+        <li>Keyword volume, difficulty, on-page grading (Pro)</li>
+        <li>SERP overlay on Google, Bing, DuckDuckGo, Yahoo (Pro)</li>
+        <li>Domain Overview, dockable toolbar, site block list</li>
+        <li>A long track record — MozBar has over 1 million users</li>
+      </ul>
+    </div>
   </div>
-  <p style="margin-top:22px"><a href="https://hassanr8998.github.io/seo-lens-privacy/">Read the privacy policy →</a></p>
+  <p class="verdict"><b>If DA and backlinks drive your work, keep MozBar or Moz Pro.</b> For on-page audits, SchemaPeek is free and private, and it runs only when you ask. Many people will reasonably use both.</p>
 </div></section>
 
-<section class="alt" id="mozbar"><div class="wrap">
-  <div class="honest">
-    <h2>Where MozBar is still better <em>(honestly)</em></h2>
-    <p>We'd rather tell you up front:</p>
-    <ul class="ticks">
-      <li><b>Domain Authority, Page Authority, Spam Score and backlinks.</b> That's Moz's link index, and SchemaPeek has no equivalent. (Moz's free Community account gives DA/PA with a 1,000-query monthly limit.)</li>
-      <li><b>Keyword data:</b> ranking keywords, difficulty, and keyword-specific on-page grading (Moz Pro).</li>
-      <li><b>SERP overlay</b> on Google, Bing, DuckDuckGo and Yahoo with metrics and CSV export (Pro). SchemaPeek's SERP tools are Google-only and still being verified.</li>
-      <li><b>Domain Overview</b>, a persistent dockable toolbar, a site block list and caching.</li>
-      <li><b>A raw JSON-LD viewer</b> and an explicit HTTPS row.</li>
-      <li><b>A long track record.</b> MozBar has over 1 million users. SchemaPeek is new.</li>
-    </ul>
-    <p class="verdict"><b>If DA and backlinks drive your work, keep MozBar or Moz Pro.</b> For on-page audits, SchemaPeek is free and private, and it runs only when you ask. Many people will reasonably use both.</p>
-  </div>
-</div></section>
-
-<section id="compare"><div class="wrap">
-  <h2>Side-by-side summary</h2>
-  <p class="note swipe">Swipe the table sideways to see all columns.</p>
+<section id="compare" style="background:var(--bg2)"><div class="wrap">
+  <h2>Side-by-side</h2>
+  <p class="note swipe" style="margin-bottom:12px">Swipe the table sideways to see all columns.</p>
   <div class="tablewrap"><table>
     <thead><tr><th></th><th>SchemaPeek</th><th>MozBar free (logged out)</th><th>MozBar with Moz Pro</th></tr></thead>
     <tbody>
@@ -217,23 +277,25 @@ footer a{color:var(--muted)}
       <tr><td>SERP overlay engines</td><td>Google (unverified live)</td><td>4 engines, no metrics logged out</td><td><b>4 engines with metrics</b></td></tr>
     </tbody>
   </table></div>
-  <p class="note">Gold marks the stronger option in each row. Based on SchemaPeek 1.0.0 and MozBar 5.0.17 as tested on 2026-10-21.</p>
+  <p class="note">Based on SchemaPeek 1.0.0 and MozBar 5.0.17 as tested on 2026-10-21. Moz pricing from moz.com/products/pro/pricing on that date.</p>
 </div></section>
 
-<section class="alt"><div class="wrap" style="max-width:860px">
+<section><div class="wrap faq">
   <h2>FAQ</h2>
+  <p class="sub">Straight answers. No fluff.</p>
   <details open><summary>Is SchemaPeek really free?</summary><p>Yes. Every feature on this page is free and there's no account. Paid domain metrics aren't part of SchemaPeek today. Everything listed here is 100% free.</p></details>
   <details><summary>Does it collect my browsing data?</summary><p>No. It has no analytics, no server and no account. It reads a page only when you open the panel on it. See the <a href="https://hassanr8998.github.io/seo-lens-privacy/">privacy policy</a>.</p></details>
   <details><summary>Why does it ask for site access?</summary><p>SchemaPeek needs site access to read the page you audit, runs nothing until you click, and sends no data. Chrome's side panel doesn't reliably get access to the current tab without it, and the checks you start (broken links, file sizes, status/redirects, robots.txt, sitemap) request those URLs directly from your browser. The only optional permission is webRequest, which records redirect hops; decline it and you just see the final URL.</p></details>
   <details><summary>Does it show Domain Authority?</summary><p>No. DA is Moz's proprietary metric. On the roadmap: optional bring-your-own-API-key domain metrics, with keys stored only on your computer.</p></details>
   <details><summary>Which browsers?</summary><p>Chrome (it uses the Chrome side panel). Other Chromium browsers haven't been tested yet.</p></details>
   <details><summary>Can I use it alongside MozBar?</summary><p>Yes. The two don't conflict.</p></details>
+  <details><summary>Wasn't this called SEO Lens?</summary><p>Yes. SchemaPeek was formerly SEO Lens. Same extension, same Chrome Web Store listing, new name so it isn't confused with other products.</p></details>
 </div></section>
 
-<section class="final"><div class="wrap">
+<section class="final" style="border-top:1px solid var(--line)"><div class="wrap">
   <h2>Audit your next page in one click</h2>
   <p class="lead">No login. No tracking. Nothing runs until you click.</p>
-  <a class="btn" href="https://chromewebstore.google.com/detail/seo-lens-free-seo-audit-b/oajembmgegfkcnidgobkhdaiddcbggmb?utm_source=website&amp;utm_medium=landing&amp;utm_campaign=footer">Add SchemaPeek to Chrome, free</a>
+  <a class="btn" href="https://chromewebstore.google.com/detail/seo-lens-free-seo-audit-b/oajembmgegfkcnidgobkhdaiddcbggmb?utm_source=website&amp;utm_medium=landing&amp;utm_campaign=footer">Add to Chrome, it's free</a>
 </div></section>
 </main>
 
@@ -243,7 +305,7 @@ footer a{color:var(--muted)}
     <a href="https://hassanr8998.github.io/seo-lens-privacy/">Privacy policy</a>
     <a href="mailto:hassanr8998@gmail.com">Contact</a>
   </div>
-  <p>MozBar and Moz are trademarks of Moz, Inc. SchemaPeek is not affiliated with or endorsed by Moz. Comparison based on SchemaPeek 1.0.0 and MozBar 5.0.17 as tested on 2026-10-21; Moz pricing from moz.com/products/pro/pricing on that date. Features may have changed since.</p>
+  <p>MozBar and Moz are trademarks of Moz, Inc. SchemaPeek is not affiliated with or endorsed by Moz. Comparison based on SchemaPeek 1.0.0 and MozBar 5.0.17 as tested on 2026-10-21; Moz pricing from moz.com/products/pro/pricing on that date. Features may have changed since. SchemaPeek was formerly SEO Lens.</p>
 </div></footer>
 </body>
 </html>
